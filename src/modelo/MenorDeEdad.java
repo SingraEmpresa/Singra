@@ -11,7 +11,7 @@ public class MenorDeEdad extends SerVivo {
 	}
 	public String generadorDeNombres()
 	{
-		String [] fonemas = {"la", "le", "li", "lu", "car", "i", "ma", "cha", "pe", "pi" , "po", "bri", "dra", "da", "jo", "se"};
+		String [] fonemas = {"la", "le", "li", "lu", "car", "i", "ma", "cha", "pe", "pi" , "po", "bri", "dra", "da", "jo", "se", "pe"};
 		String nombre=" ";
 		int numeroDeFonemas= (int) (Math.random()*4+2);
 		for (int i=0; i<numeroDeFonemas;i++)
