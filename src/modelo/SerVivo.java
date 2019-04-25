@@ -1,12 +1,33 @@
 package modelo;
 
-public abstract class SerVivo {
-	private int edadMaxima;
+public class SerVivo {
+
 	private String nombre;
-	private int numeroId;
-	private int nivelDeVida;
+	private String numeroId;
 	private int edad;
-	private int dineroAhorrado;
+
+	private double dineroAhorrado;
+
+	private double nivelDeVida;
+	private int edadMaxima;
+
+	private boolean trabajador;
+
+	public SerVivo(String nombre, String numeroId) {
+		this.setNombre(nombre);
+		this.setNumeroId(numeroId);
+		this.setEdad(0);
+		this.setDineroAhorrado(0);
+		this.setNivelDeVida(365);
+		this.setEdadMaxima(90);
+
+	}
+	
+	public SerVivo(String nombre, String numeroId, int edad, double nvd) {
+		this(nombre, numeroId);
+		this.setEdad(edad);
+		this.setNivelDeVida(nvd);
+	}
 
 	public int getEdadMaxima() {
 		return edadMaxima;
@@ -24,20 +45,20 @@ public abstract class SerVivo {
 		this.nombre = nombre;
 	}
 
-	public int getNumeroId() {
+	public String getNumeroId() {
 		return numeroId;
 	}
 
-	public void setNumeroId(int numeroId) {
-		this.numeroId = numeroId;
+	public void setNumeroId(String string) {
+		this.numeroId = string;
 	}
 
-	public int getNivelDeVida() {
+	public double getNivelDeVida() {
 		return nivelDeVida;
 	}
 
-	public void setNivelDeVida(int nivelDeVida) {
-		this.nivelDeVida = nivelDeVida;
+	public void setNivelDeVida(double nvd) {
+		this.nivelDeVida = nvd;
 	}
 
 	public int getEdad() {
@@ -48,12 +69,44 @@ public abstract class SerVivo {
 		this.edad = edad;
 	}
 
-	public int getDineroAhorrado() {
+	public double getDineroAhorrado() {
 		return dineroAhorrado;
 	}
 
-	public void setDineroAhorrado(int dineroAhorrado) {
-		this.dineroAhorrado = dineroAhorrado;
+	public void setDineroAhorrado(double d) {
+		this.dineroAhorrado = d;
 	}
 
+	public boolean isTrabajador() {
+		return trabajador;
+	}
+
+	public void setTrabajador(boolean trabajador) {
+		this.trabajador = trabajador;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((numeroId == null) ? 0 : numeroId.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SerVivo other = (SerVivo) obj;
+		if (numeroId == null) {
+			if (other.numeroId != null)
+				return false;
+		} else if (!numeroId.equals(other.numeroId))
+			return false;
+		return true;
+	}
 }
