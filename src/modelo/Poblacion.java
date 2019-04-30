@@ -55,7 +55,6 @@ public class Poblacion {
 						capitalEstado -= 182.5;
 					}
 			}
-			capitalEstado -= serVivo.getNivelDeVida();
 		}
 		for(int i=0;i<contadorJubilados;i++)
 		{

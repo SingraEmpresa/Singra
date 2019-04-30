@@ -1,11 +1,10 @@
 package modelo;
 
-import java.util.*;
 
 public class Estado {
 
 	double capitalEstado = 100000;
-
+	double produccionAnual;
 	Poblacion poblacion = new Poblacion();
 	Inem inem = new Inem();
 	
@@ -13,6 +12,7 @@ public class Estado {
 		int numeroTrabajadores = 100;
 		int numeroMenores = 50;
 		int numeroJubilados = 30;
+		
 
 		poblacion.agregarSerVivo(0, numeroTrabajadores);
 		poblacion.agregarSerVivo(1, numeroMenores);
@@ -40,9 +40,14 @@ public class Estado {
 
 	public void test() {
 		this.inicio();
+		double capitalAntes=0;
+		double capitalDespues=0;
 		for (int i = 0; i < 1000; i++) {
+			capitalAntes=capitalEstado;
 			capitalEstado=poblacion.anioPoblacion(inem,capitalEstado);
 			capitalEstado=inem.anioInem(capitalEstado);
+			capitalDespues=capitalEstado;
+			produccionAnual=capitalDespues-capitalAntes;
 			double dineroAhorrado=0;
 			System.out.println("Trabajadores= " + inem.trabajadores.size());
 			System.out.println("Desempleados= " + inem.desempleados.size());
@@ -50,6 +55,7 @@ public class Estado {
 			System.out.println("Menores		= " + poblacion.menoresDeEdad.size());
 			System.out.println("Jubilados	= " + poblacion.jubilados.size());
 			System.out.println("Factorias	= " + inem.factorias.size());
+			System.out.println("Produccion  = " + produccionAnual);
 			int j=0;
 			for (Factoria factoria : inem.factorias) {
 				j++;
